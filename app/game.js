@@ -24,7 +24,7 @@ scoreMusic.src = 'audio/score.wav';
 let score = 0;
 
 //? Отступ между холмами
-let gap = 250;
+let gap = 200;
 
 //?Управление
 document.addEventListener('keydown', moveUp);
@@ -60,7 +60,7 @@ function render() {
         if (hill[i].x == 550) {
             hill.push({
                 x: canvas.width,
-                y: Math.floor(Math.random() * hillUp.height) - hillDown.height
+                y: Math.floor(Math.random() * hillUp.height) - hillUp.height
             });
         }
 
