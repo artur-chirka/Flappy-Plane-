@@ -1,24 +1,30 @@
-let flappyPlane = document.getElementById("planeGame");
-let context = flappyPlane.getContext("2d");
+const flappyPlane = document.getElementById("planeGame");
+const context = flappyPlane.getContext("2d");
 
-let plane = new Image();
+const plane = new Image();
     plane.src = "img/planeRed1.png";
 
-let background = new Image();
+const background = new Image();
     background.src = "img/background.png";
 
-let foreground = new Image();
+const foreground = new Image();
     foreground.src = "img/groundGrass.png";
 
-let hillUp = new Image();
+const hillUp = new Image();
     hillUp.src = "img/rockGrass.png";
 
-let hillDown = new Image();
+const hillDown = new Image();
     hillDown.src = "img/rockGrassDown.png";
+
+let gap = 90; //? Отступ между холмами
 
 function render() {
     context.drawImage(background, 0, 0);
-    context.drawImage(hillDown, 100, 0)
+    context.drawImage(hillDown, 100, 0);
+    context.drawImage(hillUp, 100, 0 + hillUp.height + gap);
+    context.drawImage(foreground, 0, flappyPlane.height - foreground.height);
+    context.drawImage(plane, 10, 150, 45, 35)
+
 }
 
 hillDown.onload = render;
