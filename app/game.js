@@ -1,20 +1,27 @@
-const flappyPlane = document.getElementById("planeGame");
-const context = flappyPlane.getContext("2d");
+const canvas = document.getElementById("planeGame");
+const context = canvas.getContext("2d");
 
-const plane = new Image();
+let plane = new Image();
+let background = new Image();
+let foreground = new Image();
+let hillUp = new Image();
+let hillDown = new Image();
 plane.src = "img/planeRed1.png";
-
-const background = new Image();
 background.src = "img/background.png";
-
-const foreground = new Image();
 foreground.src = "img/groundGrass.png";
+hillUp.src = "img/hillUp.png";
+hillDown.src = "img/hillDown.png";
 
-const hillUp = new Image();
-hillUp.src = "img/rockGrass.png";
+//звук
+// let  flyMusic = new Audio();
+// flyMusic.src = 'audio/music.wav'
+// let audio = document.getElementsByClassName("audio");
 
-const hillDown = new Image();
-hillDown.src = "img/rockGrassDown.png";
+let  scoreMusic = new Audio();
+scoreMusic.src = 'audio/score.wav';
+
+//счет
+let score = 0;
 
 //? Отступ между холмами
 let gap = 200;
@@ -30,11 +37,9 @@ function moveUp() {
 let hill = [];
 
 hill[0] = {
-    x: flappyPlane.width,
+    x: canvas.width,
     y: 0
 }
-
-
 
 //?Полет 
 let positionX = 350;
@@ -47,15 +52,15 @@ function render() {
     context.drawImage(background, 0, 0);
 
     for (let i = 0; i < hill.length; i++) {
-        context.drawImage(hillDown, hill[i].x, hill[i].y, 100, 250);
         context.drawImage(hillUp, hill[i].x, hill[i].y + hillUp.height + gap, 100, 250);
+        context.drawImage(hillDown, hill[i].x, hill[i].y, 100, 250);
 
         hill[i].x--;
 
         if (hill[i].x == 550) {
             hill.push({
-                x: flappyPlane.width,
-                y: Math.floor(Math.random() * hillUp.height) - hillUp.height
+                x: canvas.width,
+                y: Math.floor(Math.random() * hillUp.height) - hillDown.height
             });
         }
 
@@ -63,19 +68,30 @@ function render() {
         if (positionX + plane.width >= hill[i].x &&
             positionX <= hill[i].x + hillUp.width &&
             (positionY <= hill[i].y + hillUp.height ||
-                positionY + plane.height >= hill[i].y + hillUp.height + gap || positionY + plane.height >= flappyPlane.height - foreground.height)) {
-            location.reload(); // Перезагружаем игру
+                positionY + plane.height >= hill[i].y + hillUp.height + gap) || positionY + plane.height >= canvas.height - foreground.height) {
+            location.reload();
+            return false; // Перезагружаем игру
         }
 
-
+        if (hill[i].x == 5) {
+            score++;
+            scoreMusic.play();
+        } // кол-во набраных очков
     }
 
-    context.drawImage(foreground, 0, flappyPlane.height - foreground.height);
+    context.drawImage(foreground, 0, canvas.height - foreground.height);
 
     context.drawImage(plane, positionX, positionY, 45, 35)
-    positionY += flight;
-    requestAnimationFrame(render);
 
+    positionY += flight;
+    
+    context.fillStyle = '#000';
+    context.font = '24px kenvector_future';
+    context.fillText('Score: ' + score, 30, canvas.height - 430);
+    
+    requestAnimationFrame(render);
 }
 
-hillDown.onload = render;
+//GAME OVER
+
+hillUp.onload = render;

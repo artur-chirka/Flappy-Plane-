@@ -1,0 +1,14 @@
+body {
+    background: #3a2e3f;
+}
+
+.game {
+    width: 800px;
+    margin: 0 auto;
+}
+ 
+canvas {
+    cursor: none;
+}
+
+
