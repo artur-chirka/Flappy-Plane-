@@ -24,7 +24,7 @@ scoreMusic.src = 'audio/score.wav';
 let score = 0;
 
 //? Отступ между холмами
-let gap = 200;
+let gap = 250;
 
 //?Управление
 document.addEventListener('keydown', moveUp);
@@ -73,7 +73,7 @@ function render() {
             return false; // Перезагружаем игру
         }
 
-        if (hill[i].x == 5) {
+        if (hill[i].x == 350) {
             score++;
             scoreMusic.play();
         } // кол-во набраных очков
@@ -94,4 +94,4 @@ function render() {
 
 //GAME OVER
 
-hillUp.onload = render;
+hillDown.onload = render;
