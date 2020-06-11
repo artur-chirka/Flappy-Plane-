@@ -52,8 +52,8 @@ function render() {
     context.drawImage(background, 0, 0);
 
     for (let i = 0; i < hill.length; i++) {
-        context.drawImage(hillUp, hill[i].x, hill[i].y + hillUp.height + gap, 100, 250);
-        context.drawImage(hillDown, hill[i].x, hill[i].y, 100, 250);
+        context.drawImage(hillDown, hill[i].x, hill[i].y + hillUp.height + gap, 100, 250);
+        context.drawImage(hillUp, hill[i].x, hill[i].y, 100, 250);
 
         hill[i].x--;
 
