@@ -90,4 +90,4 @@ function render() {
 
 //GAME OVER
 
-hillDown.onload = render;
+// hillUp.onload = render;
