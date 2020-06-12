@@ -6,11 +6,11 @@ let background = new Image();
 let foreground = new Image();
 let hillUp = new Image();
 let hillDown = new Image();
-plane.src = "../img/planeRed1.png";
-background.src = "../img/background.png";
-foreground.src = "../img/groundGrass.png";
-hillUp.src = "../img/hillUp.png";
-hillDown.src = "../img/hillDown.png";
+plane.src = "img/planeRed1.png";
+background.src = "img/background.png";
+foreground.src = "img/groundGrass.png";
+hillUp.src = "img/hillUp.png";
+hillDown.src = "img/hillDown.png";
 
 
 let  scoreMusic = new Audio();
