@@ -6,16 +6,12 @@ let background = new Image();
 let foreground = new Image();
 let hillUp = new Image();
 let hillDown = new Image();
-plane.src = "img/planeRed1.png";
-background.src = "img/background.png";
-foreground.src = "img/groundGrass.png";
-hillUp.src = "img/hillUp.png";
-hillDown.src = "img/hillDown.png";
+plane.src = "../img/planeRed1.png";
+background.src = "../img/background.png";
+foreground.src = "../img/groundGrass.png";
+hillUp.src = "../img/hillUp.png";
+hillDown.src = "../img/hillDown.png";
 
-//звук
-// let  flyMusic = new Audio();
-// flyMusic.src = 'audio/music.wav'
-// let audio = document.getElementsByClassName("audio");
 
 let  scoreMusic = new Audio();
 scoreMusic.src = 'audio/score.wav';
@@ -52,8 +48,8 @@ function render() {
     context.drawImage(background, 0, 0);
 
     for (let i = 0; i < hill.length; i++) {
-        context.drawImage(hillDown, hill[i].x, hill[i].y + hillUp.height + gap, 100, 250);
-        context.drawImage(hillUp, hill[i].x, hill[i].y, 100, 250);
+        context.drawImage(hillDown, hill[i].x, hill[i].y + hillUp.height + gap, 120, 250);
+        context.drawImage(hillUp, hill[i].x, hill[i].y, 120, 250);
 
         hill[i].x--;
 
