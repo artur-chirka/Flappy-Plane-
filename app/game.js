@@ -10,7 +10,7 @@ plane.src = "img/planeRed1.png";
 background.src = "img/background.png";
 foreground.src = "img/groundGrass.png";
 hillUp.src = "img/hillUp.png";
-hillDown.src = "img/hillDown.png";
+hillDown.src = "img/rockDown.png";
 
 
 let  scoreMusic = new Audio();
